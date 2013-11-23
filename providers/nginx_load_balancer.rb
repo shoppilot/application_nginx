@@ -73,12 +73,10 @@ end
 protected
 
 def process_hosts(nodes)
-  log "PROCESS_HOSTS SAYS #{nodes.inspect}"
   nodes.map do |n|
-    log "MAP IN PROCESS_HOSTS SAYS #{n.inspect}"
     if n.is_a?(String)
       n
-    elsif n.attribute?('cloud')
+    elsif n.respond_to?(:attribute?) && n.attribute?('cloud')
       n['cloud']['local_ipv4']
     else
       n['ipaddress']
