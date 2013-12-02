@@ -22,7 +22,7 @@ include Chef::Mixin::LanguageIncludeRecipe
 
 action :before_compile do
 
-  include_recipe 'nginx'
+  include_recipe 'nginx::source'
 
   new_resource.application_server_role "#{new_resource.application.name}_application_server" unless new_resource.application_server_role
 
